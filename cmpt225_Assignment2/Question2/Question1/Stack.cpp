@@ -40,6 +40,19 @@ void Stack::pop(){  //O(n)
     }
 }
 
-int Stack::push(int){
-
+bool Stack::push(int element){
+    StackNode* current = new StackNode();
+    if(isEmpty()){
+        top = current;
+        current -> data = element;
+        return true;
+    }
+    else if(!isEmpty()){
+        while (current -> next != nullptr){
+            current = current -> next;
+        }
+        current -> data = element;
+        return true;
+    }
+    return false;
 }
