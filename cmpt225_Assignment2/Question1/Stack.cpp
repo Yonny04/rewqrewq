@@ -13,7 +13,7 @@ int Stack::peek(){
 }
 
 void Stack::pop(){
-    if(!isEmpty()){         //checking if empty then popping the first 
+    if(!isEmpty()){         //checking if empty then popping the first ddddddddddddd
         StackNode* del = top;
         top = top -> next;
         delete del;
