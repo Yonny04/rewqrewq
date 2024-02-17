@@ -35,6 +35,6 @@ class Stack {
 
         void popAll();
 
-        void push(int element);   
+        bool push(int i);   
 
 };
