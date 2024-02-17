@@ -52,15 +52,19 @@ void Stack::pop(){  //O(n)
     StackNode* current = top;
     StackNode* current2 = top;
     
-    if(!isEmpty() && top -> next != nullptr){
-        while(current -> next != nullptr){
-            current = current -> next;
-    }   
-        while(current2 -> next != nullptr){
-            current2 = current2 -> next;
-        }
-        delete current;
-        current = nullptr;
-        current2 -> next = nullptr;
-    }  
+    if (top->next == nullptr) { //case for when the head is top //store top   
+      top = nullptr; //only applies for when head is top so we don't lose track of top
+   }
+   else { // if top is not at head
+      while (current->next != nullptr) { //make sure pointing at top
+      current = current->next;
+      }
+
+      while (current2->next != current) {
+         current2 = current2->next; //keep moving through stack until pointing at one before top
+      }
+      delete current; //get rid of the node
+      current = nullptr;
+      current2->next = nullptr; //point new top to nullptr
+   }
 }
