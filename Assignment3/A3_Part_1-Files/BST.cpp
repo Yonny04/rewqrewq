@@ -34,14 +34,22 @@ using std::nothrow;
 
    // Copy constructor
    BST::BST(const BST & aBST) {
-     
-	  // to do
+   
    }
-
    // Destructor 
    BST::~BST() {
+         if(root){
+            deleteNode(root);
+            root = nullptr;
+         }
+   }
 
-      // to do
+   void BST::deleteNode(BSTNode* node){
+      if(node){
+         deleteNode(node->left);
+         deleteNode(node->right);
+         delete node;
+      }
    }                
    
    
@@ -68,18 +76,44 @@ using std::nothrow;
    //            if "newElement" already exists in the binary search tree.
    // Time efficiency: O(log2 n)   
    void BST::insert(WordPair & newElement) {
-  
-      // to do
-	  
+      BSTNode* Element = new BSTNode(newElement);
+      for(int i=0; i<getElementCount(); i++){
+         if(root[i] != Element){
+            insertR(root, Element);
+         }
+         else{
+            throw EmptyDataCollectionException("There exists a node that matches this data.");
+         }
+      }
+      
    } 
    
    // Description: Recursive insertion into a binary search tree.
    //              Returns true when "anElement" has been successfully inserted into the 
    //              binary search tree. Otherwise, returns false.
    bool BST::insertR(BSTNode * newBSTNode, BSTNode * current) {  
-    
-	  // to do
-		
+      if(current == nullptr){
+         return new BSTNode*(newBSTNode);
+         return true;
+      }
+
+      if (newBSTNode < current){
+         if(current -> left = nullptr){
+            current -> left = newBSTNode;
+         }
+         else{
+            return insertR(current->left, newBSTNode);
+         }
+      }
+      if (newBSTNode > current){
+         if(current -> right = nullptr){
+            current -> right = newBSTNode;
+         }
+         else{
+            return insertR(current->right, newBSTNode);
+         }
+      }
+      return false;
    }
 
    

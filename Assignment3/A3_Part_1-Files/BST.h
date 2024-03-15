@@ -30,9 +30,8 @@ private:
    BSTNode * root = nullptr; 
    unsigned int elementCount = 0;        
 
-   /* Utility methods */
-   
-   // Feel free to add private methods to this class.
+   // Description: if the conditions are met, this function will delete the node
+   void deleteNode(BSTNode* node){} 
    
    // Description: Recursive insertion into a binary search tree.
    //              Returns true when "anElement" has been successfully inserted into the 
