@@ -117,7 +117,7 @@ int main(int argc, char *argv[]) {
                 cout<< "now traverse copy after"<<endl;
                 testing_copy->traverseInOrder(display);
                 cout<< endl;
-                //testing->traverseInOrder(display);
+                testing->traverseInOrder(display);
 
             } else
                 cout << "Unable to open file" << endl;

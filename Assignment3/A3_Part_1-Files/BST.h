@@ -48,6 +48,31 @@ private:
    // Postcondition: This method does not change the binary search tree.
    void traverseInOrderR(void visit(WordPair &), BSTNode * current) const;
 
+   void traverseR_Destroy(BSTNode* current){
+      if(current == nullptr){
+         return;
+      }
+      if(current->hasLeft()){
+         traverseR_Destroy(current->left);
+      }
+      if(current->hasRight()){
+         traverseR_Destroy(current->right);
+      }
+      delete current;
+   }
+
+   BSTNode* traverseCopyR(BSTNode* node) {
+    if (node == nullptr) {
+        return nullptr;
+    }
+
+    BSTNode* newNode = new BSTNode(node->element);
+    newNode->left = traverseCopyR(node->left);
+    newNode->right = traverseCopyR(node->right);
+    return newNode;
+}
+
+   
 
 public:
 

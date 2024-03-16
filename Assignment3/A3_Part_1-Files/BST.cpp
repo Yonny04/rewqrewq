@@ -29,35 +29,19 @@ using std::nothrow;
 
 /* Constructors and destructor */
 
-   // Default constructor
-   BST::BST() {
-      root = new BSTNode();
-   }
+    // Default constructor
+    BST::BST() {}
 
-   // Copy constructor
-   BST::BST(const BST & aBST) {
+    //Copy constructor
+    BST::BST(const BST& aBST) {
+    this->elementCount = aBST.elementCount;
+    root = traverseCopyR(aBST.root);
+}
 
-      root = nullptr;
-      elementCount = aBST.elementCount;
-
-   }
-
-   // Destructor 
-   BST::~BST() {
-      if(root){
-         deleteNode(root);
-         root = nullptr;
-      }
-   }
-
-   void BST::deleteNode(BSTNode* node){
-      if(node){
-         deleteNode(node->left);
-         deleteNode(node->right);
-         delete node;
-      }
-   }                
-   
+    // Destructor 
+    BST::~BST() {
+    traverseR_Destroy(root);
+}            
    
 /* Getters and setters */
 
@@ -182,7 +166,7 @@ using std::nothrow;
    // Postcondition: This method does not change the binary search tree.
    // Time efficiency: O(n)     
    void BST::traverseInOrder(void visit(WordPair &)) const {
-     cout<<"test for Traverse"<<endl;
+    //  cout<<"test for Traverse"<<endl;
      if (elementCount == 0)  
        throw EmptyDataCollectionException("Binary search tree is empty.");
 
