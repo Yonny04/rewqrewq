@@ -31,7 +31,7 @@ private:
    unsigned int elementCount = 0;        
 
    // Description: if the conditions are met, this function will delete the node
-   void deleteNode(BSTNode* node){} 
+   void deleteNode(BSTNode* node);
    
    // Description: Recursive insertion into a binary search tree.
    //              Returns true when "anElement" has been successfully inserted into the 

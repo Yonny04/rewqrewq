@@ -36,49 +36,98 @@ void display(WordPair& anElement) {
 // As you discover what main() does, record your understanding of the code by commenting it.
 // If you do not like this main(), feel free to write your own.
 // Remember, this is a test driver. Feel free to modify it as you wish!
+// ... (previous includes and definitions)
+
 int main(int argc, char *argv[]) {
 
-  BST * testing = new(nothrow) BST();
-  if (testing != nullptr) {
-      
-    string aLine = "";
-    string aWord = "";
-    string englishW = "";
-    string translationW = "";
-    string filename = "";
-    string delimiter = ":";
-    size_t pos = 0;
-    WordPair translated;
-	 
-    // Expecting at least a filename on the command line.
-    if ( ( argc > 1 ) ) {
-      filename = argv[1];
+    BST *testing = new (nothrow) BST();
+    if (testing != nullptr) {
 
-      ifstream myfile(filename);
-      if (myfile.is_open()) {
-        cout << "Reading from a file:" << endl;  // For debugging purposes
-        while ( getline (myfile,aLine) ) {
-          pos = aLine.find(delimiter);    
-          englishW = aLine.substr(0, pos);
-          aLine.erase(0, pos + delimiter.length());
-          translationW = aLine;
-          WordPair aWordPair(englishW, translationW);
-          
-		  // insert aWordPair into "testing" using a try/catch block
-        }
-        myfile.close();
+        string aLine = "";
+        string englishW = "";
+        string translationW = "";
+        string filename = "";
+        string delimiter = ":";
+        size_t pos = 0;
 
-        // More BST testing happening here!
-		
-      }
-	  else 
-        cout << "Unable to open file" << endl;
-    }
-    else
-      cout << "Missing the data filename!" << endl;
-  }
-  else  
-    cout << "new failed!" << endl;	
+        // Expecting at least a filename on the command line.
+        if ((argc > 1)) {
+            filename = argv[1];
 
-  return 0;
+            ifstream myfile(filename);
+            if (myfile.is_open()) {
+                cout << "Reading from a file:" << endl;  // For debugging purposes
+                while (getline(myfile, aLine)) {
+                    // Parse the line into English and translation using the delimiter ":"
+                    pos = aLine.find(delimiter);
+                    englishW = aLine.substr(0, pos);
+                    aLine.erase(0, pos + delimiter.length());
+                    translationW = aLine;
+
+                    // Create a WordPair from parsed values
+                    WordPair aWordPair(englishW, translationW);
+
+                    try {
+                        // Insert aWordPair into "testing" using a try/catch block
+                        testing->insert(aWordPair);
+                        cout << "Inserted: " << aWordPair << endl;
+                    } catch (const ElementAlreadyExistsException &e) {
+                        cout << "Error: " << e.what() << endl;
+                    } catch (const UnableToInsertException &e) {
+                        cout << "Error: " << e.what() << endl;
+                    }
+                    
+                    try{
+                    	cout << "Retrieving "<< testing -> retrieve(aWordPair)<<endl;
+                    	
+                    }
+                    catch (const ElementDoesNotExistException &e) {
+                        cout << "Error: " << e.what() << endl;
+                    } catch (const EmptyDataCollectionException &e) {
+                        cout << "Error: " << e.what() << endl;
+                    }
+                }
+                WordPair aWordPair("DNE", "DNE");
+                try{
+                    	cout << "Retrieving"<< testing -> retrieve(aWordPair)<<endl;
+                    	
+                    }
+                    catch (const ElementDoesNotExistException &e) {
+                        cout << "Error: " << e.what() << endl;
+                    } catch (const EmptyDataCollectionException &e) {
+                        cout << "Error: " << e.what() << endl;
+                    }
+                
+                myfile.close();
+
+                // More BST testing happening here!
+                cout << "Number of elements in the BST: " << testing->getElementCount() << endl;
+
+                // Traversing and displaying elements in order
+                cout << "In-order traversal of the BST:" << endl;
+                testing->traverseInOrder(display);
+                cout << endl;
+                BST* testing_copy = new BST(*testing); 
+                cout<< endl;
+                cout<< "now traverse copy"<<endl;
+                testing_copy->traverseInOrder(display);
+                cout<< endl;
+                delete testing;
+                 cout<< endl;
+                cout<< "now traverse copy after"<<endl;
+                testing_copy->traverseInOrder(display);
+                cout<< endl;
+                //testing->traverseInOrder(display);
+
+            } else
+                cout << "Unable to open file" << endl;
+        } else
+            cout << "Missing the data filename!" << endl;
+
+        // Clean up allocated memory
+        //delete testing;
+    } else
+        cout << "new failed!" << endl;
+
+    return 0;
 }
