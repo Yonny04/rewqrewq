@@ -34,7 +34,6 @@ int main(int argc, char *argv[]) {
     string aWord = "";
     string englishW = "";
     string translationW = "";
-    string filename = "";
     string delimiter = ":";
     size_t pos = 0;
     WordPair translated;
@@ -71,6 +70,9 @@ int main(int argc, char *argv[]) {
         return 1; // Exit with error
     }
 
+    
+
+
     // If user entered "display" at the command line, print the content of the dictionary
     if (argc > 1 && strcmp(argv[1], "display") == 0) {
         testing->displayContent(display);
@@ -79,6 +81,7 @@ int main(int argc, char *argv[]) {
         string userInput;
         while (getline(cin, userInput)) {
             // Check if user entered "display"
+            
             if (userInput == "display") {
                 testing->displayContent(display);
             } else {
