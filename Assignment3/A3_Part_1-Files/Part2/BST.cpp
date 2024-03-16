@@ -8,6 +8,8 @@
  * Class invariant: It is always a BST.
  * 
  * Author: Inspired from our textbook
+ * Yoonsang You (yya270@sfu.ca)
+ * Joshua Kim (jjk24@sfu.ca)
  * Date of last modification: Feb. 2024
  */
  

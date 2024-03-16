@@ -88,15 +88,15 @@ int main(int argc, char *argv[]) {
                     }
                 }
                 WordPair aWordPair("DNE", "DNE");
-                try{
-                    	cout << "Retrieving"<< testing -> retrieve(aWordPair)<<endl;
+                // try{
+                //     	cout << "Retrieving"<< testing -> retrieve(aWordPair)<<endl;
                     	
-                    }
-                    catch (const ElementDoesNotExistException &e) {
-                        cout << "Error: " << e.what() << endl;
-                    } catch (const EmptyDataCollectionException &e) {
-                        cout << "Error: " << e.what() << endl;
-                    }
+                //     }
+                //     catch (const ElementDoesNotExistException &e) {
+                //         cout << "Error: " << e.what() << endl;
+                //     } catch (const EmptyDataCollectionException &e) {
+                //         cout << "Error: " << e.what() << endl;
+                //     }
                 
                 myfile.close();
 

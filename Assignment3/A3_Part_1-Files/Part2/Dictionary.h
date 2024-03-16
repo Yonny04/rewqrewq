@@ -6,6 +6,8 @@
  *              Duplicated elements not allowed.
  *              
  * Author: AL
+ * Yoonsang You (yya270@sfu.ca)
+ * Joshua Kim (jjk24@sfu.ca)
  * Date of last modification: Feb. 2024
  */
 

@@ -5,7 +5,8 @@
  *              BST-based implementation.
  *              Duplicated elements are not allowed.
  *              
- * Author: Senka Kuboki
+ * Author:  Yoonsang You (yya270@sfu.ca)
+ *          Joshua Kim (jjk24@sfu.ca)
  * Date of last modification: 03/15/2024
  */
 

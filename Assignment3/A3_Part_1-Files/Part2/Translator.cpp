@@ -1,3 +1,17 @@
+/*
+ * Translator.cpp
+ * 
+ * Description: Translator implementation of BST Tree
+ *
+ * Class invariant: It is always a BST.
+ * 
+ * Author: Inspired from our textbook
+ * Yoonsang You (yya270@sfu.ca)
+ * Joshua Kim (jjk24@sfu.ca)
+ * Date of last modification: March.15 2024
+ */
+
+
 #include <iostream>
 #include <stdio.h>
 #include <cstdlib>
@@ -70,18 +84,12 @@ int main(int argc, char *argv[]) {
         return 1; // Exit with error
     }
 
-    
-
-
     // If user entered "display" at the command line, print the content of the dictionary
     if (argc > 1 && strcmp(argv[1], "display") == 0) {
         testing->displayContent(display);
     } else {
-        // Read input from the user
-        string userInput;
-        while (getline(cin, userInput)) {
-            // Check if user entered "display"
-            
+        string userInput;   // Read input from the user
+        while (getline(cin, userInput)) {  // Checks for "display"
             if (userInput == "display") {
                 testing->displayContent(display);
             } else {
